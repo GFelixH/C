@@ -1,2 +1,2 @@
 # C
-My C repository
+C exercices from books and the web.
