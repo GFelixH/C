@@ -41,6 +41,7 @@ int main(void)
         {"#......#...#"},
         {"############"}};
     int xStart = 2;
+    int position;
     int yStart = 0;
     char initialOrientation = 'R';
     int checker;
