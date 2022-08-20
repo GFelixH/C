@@ -13,13 +13,40 @@ FILE *openFile();
 void createFile();
 void printUsers();
 void createUser();
+void modifyUser();
+
 int main(void)
 {
     createFile();
     printUsers();
     createUser();
     printUsers();
+    modifyUser();
+    printUsers();
     return 0;
+}
+void modifyUser()
+{
+    FILE *fPtr = openFile();
+    Customer streamCustomer = {0, 0.0, ""};
+
+    puts("Insert id to be updated");
+    int idx;
+    scanf("%d", &idx);
+    fread(&streamCustomer, sizeof(Customer), 1, fPtr);
+    while (!feof(fPtr))
+    {
+        if (idx == streamCustomer.id)
+        {
+            Customer fillCustomer = {0, 0.0, ""};
+            puts("Insert balance and name:");
+            scanf("%lf%29s", &fillCustomer.balance, &fillCustomer.name);
+            fwrite(&fillCustomer, sizeof(Customer), 1, fPtr);
+            break;
+        }
+        fread(&streamCustomer, sizeof(Customer), 1, fPtr);
+    }
+    fclose(fPtr);
 }
 void createUser()
 {
