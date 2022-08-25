@@ -4,18 +4,20 @@ sum the values in a numeric array. The macro should receive the array and the nu
 in the array as arguments
 */
 #include <stdio.h>
-#define SUMARRAY(array, size) ({   \
-    int sum = 0;                   \
-    for (int i = 0; i < size; i++) \
-    {                              \
-        sum += array[i];           \
-    }                              \
-    sum;                           \
-})
-
+#define SUMARRAY(array, size) sumarray(array, size)
+int sumarray(int *array, int size);
 int main(void)
 {
     int array[5] = {1, 2, 3, 4, 5};
     printf("%d", SUMARRAY(array, 5));
     return 0;
+}
+int sumarray(int *array, int size)
+{
+    int sum = 0;
+    for (int i = 0; i < size; i++)
+    {
+        sum += array[i];
+    }
+    return sum;
 }

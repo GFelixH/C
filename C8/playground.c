@@ -3,10 +3,7 @@
 
 int main(void)
 {
-    char str1[] = "(123)";
-    int areaCode;
-
-    sscanf(str1, "(%d)", &areaCode);
-    printf("%d\n", areaCode);
+    int i = __STDC_VERSION__;
+    printf("%d", i);
     return 0;
 }
