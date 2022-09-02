@@ -1,11 +1,15 @@
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 int main(void)
 {
-    char text[100] = "IFMMP IFMMP", ciphertext[100] = "";
-    int key = 1;
-
+    char text[100] = "HELLO HELLO", ciphertext[100] = "";
+    printf("%s", "plaintext: ");
+    char key[27] = "YTNSHKVEFXRBAUQZCLWDMIPGJO";
+    // fflush(stdin);
+    // fgets(text, 100, stdin);
     for (int i = 0; i < strlen(text); i++)
     {
         short isUpperCase = 0;
@@ -24,23 +28,17 @@ int main(void)
         {
             charvalue -= 96;
         }
-        charvalue = (charvalue - key);
-        if (charvalue == 0)
-        {
-            charvalue = 26;
-        }
         if (isUpperCase)
         {
-            char c = (char)(charvalue + 64);
+            char c = toupper(key[charvalue - 1]);
             ciphertext[i] = c;
         }
         else
         {
-            char c = (char)(charvalue + 96);
+            char c = tolower(key[charvalue - 1]);
             ciphertext[i] = c;
         }
     }
-
     printf("\nCiphertext : %s\n\n", ciphertext);
     return 0;
 }
